@@ -5,7 +5,8 @@ using TMPro;
 
 public class UI_PoinJawaban : MonoBehaviour
 {
-    [SerializeField] private UI_PesanLevel _tempatPesan;
+    public static event System.Action<string, bool> EventJawabSoal;
+    //[SerializeField] private UI_PesanLevel _tempatPesan;
     [SerializeField] private TextMeshProUGUI _teksJawaban = null;
     [SerializeField] private bool _adalahBenar = false;
 
@@ -24,7 +25,8 @@ public class UI_PoinJawaban : MonoBehaviour
     public void PilihJawaban()
     {
         //Debug.Log($"{_teksJawaban.text} Adalah {_adalahBenar}");
-        _tempatPesan.Pesan = $"{_teksJawaban.text} Adalah {_adalahBenar}";
+        //_tempatPesan.Pesan = $"{_teksJawaban.text} Adalah {_adalahBenar}";
+        EventJawabSoal?.Invoke(_teksJawaban.text, _adalahBenar);
     }
 
     public void SetJawaban(string teksJawaban, bool adalahBenar)

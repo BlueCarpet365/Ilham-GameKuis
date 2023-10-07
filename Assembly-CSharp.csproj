@@ -58,12 +58,18 @@
     <Analyzer Include="D:\Unity\2022.3.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI_LevelPackList.cs" />
+    <Compile Include="Assets\Scripts\UI_LevelKuisList.cs" />
+    <Compile Include="Assets\Scripts\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\LevelPackKuis.cs" />
     <Compile Include="Assets\Scripts\UI_Pertanyaan.cs" />
     <Compile Include="Assets\Scripts\UI_PesanLevel.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\UI_PoinJawaban.cs" />
+    <Compile Include="Assets\Scripts\UI_OpsiLevelPack.cs" />
+    <Compile Include="Assets\Scripts\UI_OpsiLevelKuis.cs" />
     <Compile Include="Assets\Scripts\LevelSoalKuis.cs" />
+    <Compile Include="Assets\Scripts\InisialDataGameplay.cs" />
     <Compile Include="Assets\Scripts\UI_Timer.cs" />
     <Compile Include="Assets\Scripts\PlayerProgress.cs" />
   </ItemGroup>
@@ -82,6 +88,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Temporary\contoh.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

@@ -6,18 +6,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelPackKuis _soalSoal;
     [SerializeField] private UI_Pertanyaan _pertanyaan = null;
     [SerializeField] private UI_PoinJawaban[] _pilihanJawaban = new UI_PoinJawaban[0];
-
+    [SerializeField] private GameSceneManager _gameSceneManager;
+    [SerializeField] private string _namaScenePilihMenu = string.Empty;
     private int _indexSoal = -1;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!_playerProgress.MuatProgress())
-        {
-            _playerProgress.SimpanProgress();
-        }
+        //if (!_playerProgress.MuatProgress())
+        //{
+        //    _playerProgress.SimpanProgress();
+        //}
         
-        NextLevel();
+        //NextLevel();
     }
 
     // Update is called once per frame
@@ -32,7 +33,9 @@ public class LevelManager : MonoBehaviour
 
         if(_indexSoal >= _soalSoal.BanyakLevel)
         {
-            _indexSoal = 0;
+            //_indexSoal = 0;
+            _gameSceneManager.BukaScene(_namaScenePilihMenu);
+            return;
         }
 
         LevelSoalKuis soal = _soalSoal.AmbilLevelKe(_indexSoal);

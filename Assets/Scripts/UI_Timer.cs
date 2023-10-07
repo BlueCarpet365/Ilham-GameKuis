@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Timer : MonoBehaviour
 {
-    [SerializeField] private UI_PesanLevel _tempatPesan;
+    public static event System.Action EventWaktuHabis;
+    //[SerializeField] private UI_PesanLevel _tempatPesan;
     [SerializeField] private Slider _timeBar;
     [SerializeField] private float _waktuJawab = 30f;
     private float _sisaWaktu = 0f;
@@ -35,9 +36,10 @@ public class UI_Timer : MonoBehaviour
         
         if(_sisaWaktu <= 0f)
         {
-            _tempatPesan.Pesan = "You ran out of time!";
-            _tempatPesan.gameObject.SetActive(true);
-            Debug.Log("You ran out of time!");
+            //_tempatPesan.Pesan = "You ran out of time!";
+            //_tempatPesan.gameObject.SetActive(true);
+            //Debug.Log("You ran out of time!");
+            EventWaktuHabis?.Invoke();
             _waktuBerjalan = false;
             return;
         }
