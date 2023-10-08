@@ -18,22 +18,35 @@ public class PlayerProgress : ScriptableObject
 
     [SerializeField] private string _filename = "contoh.txt";
 
+    [SerializeField] private string _startingLevelPackName = string.Empty;
+
     public MainData progressData = new MainData();
 
     public void SimpanProgress()
     {
-        progressData.koin = 200;
-        if (progressData.progressLevel == null)
+        //progressData.koin = 200;
+        //if (progressData.progressLevel == null)
+        //{
+        //    progressData.progressLevel = new();
+        //}
+        //progressData.progressLevel.Add("Level Pack 1", 3);
+        //progressData.progressLevel.Add("Level Pack 3", 5);
+
+        if(progressData.progressLevel == null)
         {
             progressData.progressLevel = new();
+            progressData.koin = 0;
+            progressData.progressLevel.Add(_startingLevelPackName, 1);
         }
-        progressData.progressLevel.Add("Level Pack 1", 3);
-        progressData.progressLevel.Add("Level Pack 3", 5);
+#if UNITY_EDITOR
+        string directory = Application.dataPath + "/Temporary/";
+#elif (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+        string directory = Application.persistentDataPath + "/ProgresLokal/";
+#endif
+        var path = directory + "/" + _filename;
 
-
-
-        var directory = Application.dataPath + "/Temporary/";
-        var path = directory + _filename;
+        //var directory = Application.dataPath + "/Temporary/";
+        //var path = directory + _filename;
 
         if (!Directory.Exists(directory))
         {
@@ -72,7 +85,13 @@ public class PlayerProgress : ScriptableObject
 
     public bool MuatProgress()
     {
-        var directory = Application.dataPath + "/Temporary/";
+#if UNITY_EDITOR
+        string directory = Application.dataPath + "/Temporary/";
+#elif (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+        string directory = Application.persistentDataPath + "/ProgresLokal/";
+#endif
+        //var path = directory + "/" + _filename;
+        //var directory = Application.dataPath + "/Temporary/";
         var path = directory + _filename;
 
         var fileStream = File.Open(path, FileMode.OpenOrCreate);

@@ -8,16 +8,16 @@ public class UI_LevelPackList : MonoBehaviour
     [SerializeField] private UI_LevelKuisList _levelList;
     [SerializeField] private UI_OpsiLevelPack _tombolLevelPack;
     [SerializeField] private RectTransform _content;
-    [SerializeField] private LevelPackKuis[] _levelPacks = new LevelPackKuis[0];
+    //[SerializeField] private LevelPackKuis[] _levelPacks = new LevelPackKuis[0];
 
     // Start is called before the first frame update
     void Start()
     {
-        LoadlevelPack();
+        //LoadlevelPack();
 
         if (_inisialData.SaatKalah)
         {
-            UI_OpsiLevelPack_EventSaatKlik(_inisialData.levelPack);
+            UI_OpsiLevelPack_EventSaatKlik(_inisialData.levelPack, false);
         }
 
         UI_OpsiLevelPack.EventSaatKlik += UI_OpsiLevelPack_EventSaatKlik;
@@ -28,8 +28,11 @@ public class UI_LevelPackList : MonoBehaviour
         UI_OpsiLevelPack.EventSaatKlik -= UI_OpsiLevelPack_EventSaatKlik;
     }
 
-    private void UI_OpsiLevelPack_EventSaatKlik(LevelPackKuis levelPack)
+    private void UI_OpsiLevelPack_EventSaatKlik(LevelPackKuis levelPack, bool terkunci)
     {
+        if (terkunci)
+            return;
+
         _levelList.gameObject.SetActive(true);
         _levelList.UnloadlevelPack(levelPack);
         gameObject.SetActive(false);
@@ -37,14 +40,20 @@ public class UI_LevelPackList : MonoBehaviour
 
     }
 
-    private void LoadlevelPack()
+    public void LoadlevelPack(LevelPackKuis[] levelPacks, PlayerProgress.MainData
+        playerData)
     {
-        foreach(var lp in _levelPacks)
+        foreach(var lp in levelPacks)
         {
             var t = Instantiate(_tombolLevelPack);
             t.SetLevelPack(lp);
             t.transform.SetParent(_content);
             t.transform.localScale = Vector3.one;
+
+            if (!playerData.progressLevel.ContainsKey(lp.name))
+            {
+                t.KunciLevelPack();
+            }
         }
     }
 

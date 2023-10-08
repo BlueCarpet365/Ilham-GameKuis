@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class UI_OpsiLevelPack : MonoBehaviour
 {
-    public static event System.Action<LevelPackKuis> EventSaatKlik;
+    public static event System.Action<LevelPackKuis, bool> EventSaatKlik;
     [SerializeField] Button _tombol;
     [SerializeField] private TextMeshProUGUI _packName;
     [SerializeField] private LevelPackKuis _levelPack;
+    [SerializeField] private TextMeshProUGUI _labelTerkunci;
+    [SerializeField] private TextMeshProUGUI _labelHarga;
+    [SerializeField] private bool _terkunci = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +37,22 @@ public class UI_OpsiLevelPack : MonoBehaviour
     private void SaatKlik()
     {
         //Debug.Log("yay!!!!!!");
-        EventSaatKlik?.Invoke(_levelPack);
+        EventSaatKlik?.Invoke(_levelPack, _terkunci);
+    }
+
+    public void KunciLevelPack()
+    {
+        _terkunci = true;
+        _labelTerkunci.gameObject.SetActive(true);
+        _labelHarga.transform.parent.gameObject.SetActive(true);
+        _labelHarga.text = $"{_levelPack.Harga}";
+    }
+
+    public void BuaLevelPack()
+    {
+        _terkunci = false;
+        _labelTerkunci.gameObject.SetActive(false);
+        _labelHarga.transform.parent.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

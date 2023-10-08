@@ -14,14 +14,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (!_playerProgress.MuatProgress())
-        //{
-        //    _playerProgress.SimpanProgress();
-        //}
-
         _soalSoal = _inisialData.levelPack;
         _indexSoal = _inisialData.levelIndex - 1;
-
         NextLevel();
         UI_PoinJawaban.EventJawabSoal += UI_PoinJawaban_EventJawabSoal;
     }
@@ -33,9 +27,13 @@ public class LevelManager : MonoBehaviour
 
     private void UI_PoinJawaban_EventJawabSoal(string jawaban, bool adalahBenar)
     {
+        var namalevelPack = _inisialData.levelPack.name;
+
         if (adalahBenar)
         {
             _playerProgress.progressData.koin += 10;
+            _playerProgress.progressData.progressLevel[namalevelPack] = _indexSoal + 2;
+            _playerProgress.SimpanProgress();
         }
     }
 

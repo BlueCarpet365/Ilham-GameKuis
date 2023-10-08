@@ -11,6 +11,13 @@ public class UI_OpsiLevelKuis : MonoBehaviour
     [SerializeField] private Button _tombolLevel;
     [SerializeField] private TextMeshProUGUI _levelName;
     [SerializeField] private LevelSoalKuis _levelKuis;
+    
+    public bool InteraksiTombol
+    {
+        get => _tombolLevel.interactable;
+        set => _tombolLevel.interactable = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
