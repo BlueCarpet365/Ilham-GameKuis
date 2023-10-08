@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private InisialDataGameplay _inisialData;
     [SerializeField] private PlayerProgress _playerProgress;
     [SerializeField] private LevelPackKuis _soalSoal;
     [SerializeField] private UI_Pertanyaan _pertanyaan = null;
     [SerializeField] private UI_PoinJawaban[] _pilihanJawaban = new UI_PoinJawaban[0];
     [SerializeField] private GameSceneManager _gameSceneManager;
     [SerializeField] private string _namaScenePilihMenu = string.Empty;
-    private int _indexSoal = -1;
+    private int _indexSoal = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,30 @@ public class LevelManager : MonoBehaviour
         //{
         //    _playerProgress.SimpanProgress();
         //}
-        
-        //NextLevel();
+
+        _soalSoal = _inisialData.levelPack;
+        _indexSoal = _inisialData.levelIndex - 1;
+
+        NextLevel();
+        UI_PoinJawaban.EventJawabSoal += UI_PoinJawaban_EventJawabSoal;
+    }
+
+    private void OnDestroy()
+    {
+        UI_PoinJawaban.EventJawabSoal -= UI_PoinJawaban_EventJawabSoal;
+    }
+
+    private void UI_PoinJawaban_EventJawabSoal(string jawaban, bool adalahBenar)
+    {
+        if (adalahBenar)
+        {
+            _playerProgress.progressData.koin += 10;
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        _inisialData.SaatKalah = false;
     }
 
     // Update is called once per frame

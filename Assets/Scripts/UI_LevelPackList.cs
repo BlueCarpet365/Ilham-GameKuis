@@ -33,6 +33,8 @@ public class UI_LevelPackList : MonoBehaviour
         _levelList.gameObject.SetActive(true);
         _levelList.UnloadlevelPack(levelPack);
         gameObject.SetActive(false);
+        _inisialData.levelPack = levelPack;
+
     }
 
     private void LoadlevelPack()

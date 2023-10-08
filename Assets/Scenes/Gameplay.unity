@@ -1037,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b8ec6b53b8556408176a746173d3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inisialData: {fileID: 11400000, guid: f0d770305752f3f43a154af5ff12a969, type: 2}
   _playerProgress: {fileID: 11400000, guid: 1e181476040f1e54fa87b228cc2d0a21, type: 2}
   _soalSoal: {fileID: 11400000, guid: a99fbde3f8aa13541a69ccaedd0425a0, type: 2}
   _pertanyaan: {fileID: 816679809}
@@ -1145,6 +1146,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 11400000, guid: f0d770305752f3f43a154af5ff12a969, type: 2}
+        m_TargetAssemblyTypeName: InisialDataGameplay, Assembly-CSharp
+        m_MethodName: set_SaatKalah
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 565968368}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: NextLevel
@@ -1497,6 +1510,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: MenuPilihLevel
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f0d770305752f3f43a154af5ff12a969, type: 2}
+        m_TargetAssemblyTypeName: InisialDataGameplay, Assembly-CSharp
+        m_MethodName: set_SaatKalah
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &756445350
 MonoBehaviour:
@@ -2113,7 +2138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
